@@ -1,15 +1,19 @@
 {
     "compilerOptions": {
+        "types": [
+            "reflect-metadata",
+            "node",
+            "express"
+        ],
         "allowJs": true,
         "module": "commonjs",
-        "rootDir": "src",
-        "baseUrl": ".",
         "moduleResolution": "node",
         "experimentalDecorators": true,
         "esModuleInterop": true,
         "emitDecoratorMetadata": true,
         "noImplicitAny": true,
-        "outDir": "build",
+        "outDir": "./build/",
+        "baseUrl": ".",
         "paths": {
             "*": [
                 "node_modules/*",
@@ -25,5 +29,10 @@
         "typeRoots": [
             "node_modules/@types"
         ]
-    }
+    },
+    "exclude": [
+        "clients",
+        "dockest.ts",
+        "build"
+    ]
 }
