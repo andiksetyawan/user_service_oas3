@@ -1,19 +1,6 @@
 import { createApp } from "./app";
 import { logger } from "./util/logger";
 
-// function main() {
-//   const app = express();
-//   const port = 8080;
-
-//   app.get("/", (req, res) => res.send("Express + Typescript + NodeJS = 😍"));
-
-//   app.listen(port, () => {
-//     console.log(`[server] server dimulai di http://localhost:${port} ⚡`);
-//   });
-// }
-
-// main();
-
 (async () => {
   try {
     const app = await createApp();
@@ -27,6 +14,6 @@ import { logger } from "./util/logger";
       );
     });
   } catch (err) {
-    logger.error(err, "error caught in server.ts");
+    logger.error(err, "error caught in index.ts");
   }
 })();
