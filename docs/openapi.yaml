@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: "User Service Docs"
+  description: "User Service Api"
+servers:
+  - description: Local development
+    url: "http://localhost:3000/api"
+  - description: Local Mocking
+    url: "http://localhost:3000/mock-api"
+paths:
+  /users:
+    get:
+      tags:
+        - User
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+    post:
+      tags:
+        - User
+      operationId: postUsers
+      requestBody:
+        description: User to add to the users store
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserRequest"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /users/{id}:
+    get:
+      tags:
+        - User
+      description: get user by id
+      parameters:
+        - name: id
+          in: path
+          description: ID of user to fetch
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - firstName
+        - lastName
+        - address
+        - isActive
+      properties:
+        id:
+          type: number
+          example: 11
+          x-faker: random.number
+        firstName:
+          type: string
+          example: "Carl"
+        lastName:
+          type: string
+          example: "Sagan"
+        address:
+          type: string
+          example: "Cosmos"
+        isActive:
+          type: boolean
+          example: true
+    UserRequest:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - address
+        - isActive
+      properties:
+        firstName:
+          type: string
+          example: "Carl"
+        lastName:
+          type: string
+          example: "Sagan"
+        address:
+          type: string
+          example: "Cosmos"
+        isActive:
+          type: boolean
+          example: true
+    UserUpdateRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: "Carl"
+        lastName:
+          type: string
+          example: "Sagan"
+        address:
+          type: string
+          example: "Cosmos"
